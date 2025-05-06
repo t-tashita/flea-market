@@ -1,0 +1,197 @@
+.search {
+  width: 30%;
+}
+
+.search-form__input {
+  background-color: #fff;
+  color: #000;
+  border: solid #000 1px;
+  border-radius: 3px;
+  align-items: center;
+  padding: 20px 30px;
+  width: 100%;
+  height: 40px;
+}
+
+.search-form__input::placeholder {
+  color: #000;
+}
+
+.navigation {
+  width: 22%;
+  display: flex;
+  font-size: 1.2vw;
+}
+
+.header__link {
+  color: #fff;
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+}
+
+.header__link-logout {
+  padding: 2% 0;
+}
+
+.header__link-login,
+.header__link-mypage {
+  color: #fff;
+  text-decoration: none;
+  margin: 4%;
+  padding: 2% 0;
+}
+
+.header__link-sell {
+  color: #000;
+  background-color: #fff;
+  text-decoration: none;
+  border-radius: 2.5px;
+  padding: 2% 6%;
+  margin: 4%;
+}
+
+.all-contents {
+  display: flex;
+  margin: 30px;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.left-content {
+  flex: 2;
+  margin: 30px;
+}
+
+.right-content {
+  flex: 1;
+  margin: 30px;
+}
+
+.item-detail__info,
+.order-form__detail {
+  margin: 30px;
+}
+
+.item-detail,
+.order-form__group {
+  display: flex;
+  border-bottom: solid #000 1px;
+}
+
+.item-img {
+  width: 200px;
+  margin: 30px;
+}
+
+.item-name {
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.item-price {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+.item-value {
+  font-size: 24px;
+}
+
+.order-form__label {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.order-form__condition-select {
+  margin: 40px 70px;
+  padding: 2.5px 5px;
+  border: solid #000 1px;
+  border-radius: 3px;
+  color: #555;
+  font-weight: bold;
+  width: 280px;
+}
+
+.order-form__change {
+  display: flex;
+  justify-content: space-between;
+}
+
+.address-form__btn {
+  color: #08f;
+  text-decoration: none;
+}
+
+.order-form__address {
+  margin: 30px 70px;
+}
+
+.order-form__postal_code,
+.order-form__address_input {
+  margin: 2.5px;
+  font-weight: bold;
+}
+
+.order-form__error-message {
+  color: #f00;
+}
+
+.pay-detail__table {
+  margin: 30px;
+  border: solid #000;
+  border-width: 1px 1px 0;
+  width: 100%;
+  border-spacing: 0;
+}
+
+.pay-detail__price,
+.pay-detail__method {
+  display: inline-block;
+  padding: 30px;
+  width: 100%;
+  border-bottom: solid #000 1px;
+}
+
+.pay-detail__price-ttl,
+.pay-detail__method-ttl,
+.pay-detail__price-value,
+.pay-detail__method-name {
+  width: 140px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.address-form__buy {
+  margin: 30px;
+  width: 100%;
+}
+
+.address-form__btn-buy {
+  width: 100%;
+  height: 38px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #f55;
+  border-radius: 2.5px;
+  text-align: center;
+  border: none;
+}
+
+/* ✅ 850px以下では縦並び */
+@media screen and (max-width: 850px) {
+  .all-contents {
+    flex-direction: column;
+  }
+
+  .left-content,
+  .right-content {
+    width: 100%;
+  }
+
+  .right-content {
+    margin-top: 20px;
+  }
+}
