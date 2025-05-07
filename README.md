@@ -48,7 +48,7 @@ DB_PASSWORD=laravel_pass
 ・MySQL 8.0.26  
 
 # ER図  
-![Uploading furima.drawio.svg…]()
+![Image](https://github.com/user-attachments/assets/916d2466-c149-42c7-ada1-bd5d2b4193a5)
 
 # URL  
 ・開発環境:http://localhost/  
