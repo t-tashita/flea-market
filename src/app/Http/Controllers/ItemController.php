@@ -27,8 +27,7 @@ class ItemController extends Controller
         $query = Item::query();
 
         if (!empty($keyword)) {
-            $query->where('item_name', 'like', "%{$keyword}%")
-                ->orWhere('description', 'like', "%{$keyword}%");
+            $query->where('item_name', 'like', "%{$keyword}%");
         }
         $userId = auth()->id();
         if ($userId) {
@@ -55,7 +54,7 @@ class ItemController extends Controller
         return view('detail', compact('item', 'categories', 'condition', 'likes', 'comments', 'isLiked'));
     }
 
-    public function store(Request $request)
+    public function like(Request $request)
     {
         $itemId = $request->item_id;
         $userId = auth()->id();
@@ -95,11 +94,11 @@ class ItemController extends Controller
     {
         $userId = auth()->id();
         $keyword = $request->query('keyword');
-        $items = collect();
+        $items = [];
 
         if ($userId) {
             $items= Item::with(['likes'])
-            ->whereHas('likes', function ($q) use ($userId) {
+            ->where('user_id', '<>', $userId)->whereHas('likes', function ($q) use ($userId) {
                 $q->where('likes.user_id', '=', $userId);
             });
 
@@ -137,7 +136,7 @@ class ItemController extends Controller
         ]);
         $request->session()->forget('purchase_address');
 
-        return redirect('/mypage/buy');
+        return redirect()->route('mypage.page', ['page' => 'buy']);
     }
 
     public function change($item_id)
@@ -169,7 +168,7 @@ class ItemController extends Controller
     {
         $image = $request->file('image');
         $imageName = $image->getClientOriginalName();
-        $image->storeAs('public', $imageName);
+        $image->storeAs('', $imageName, 'public');
 
         $item = Item::create([
             'user_id' => auth()->id(),

@@ -23,7 +23,6 @@ class UsersTableSeeder extends Seeder
             'user_building' => '大井ビル',
             'created_at' => now(),
             'updated_at' => now(),
-            'first_login' => false,
         ];
         DB::table('users')->insert($param);
     }

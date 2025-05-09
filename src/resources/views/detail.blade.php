@@ -35,7 +35,7 @@
     <p class="item-brand">{{ $item->brand }}</p>
     <p class="item-price">&yen;<span class="item-value">{{ number_format($item->price) }}</span>(税込)</p>
     <div class="item-evaluation">
-      <form action="/like" method="post" class="item-likes">
+      <form action="/item/{{$item->id}}/like" method="post" class="item-likes">
         @csrf
         <input type="hidden" name="item_id" value="{{ $item->id }}">
         <button type="submit"  class="item-likes__icon {{ auth()->check() && $isLiked ? 'liked' : '' }}">

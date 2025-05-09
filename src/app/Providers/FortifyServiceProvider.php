@@ -43,6 +43,26 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(FortifyLoginRequest::class, LoginRequest::class);
-        
+
+        app()->singleton(
+            \Laravel\Fortify\Contracts\LoginResponse::class,
+            function () {
+                return new class implements \Laravel\Fortify\Contracts\LoginResponse {
+                    public function toResponse($request)
+                    {
+                        $user = $request->user();
+
+                        // 住所が登録されていない場合、住所登録ページへ
+                        if (empty($user->user_postal_code)) {
+                            return redirect('/mypage/profile');
+                        }
+
+
+                        // それ以外は通常のホームへ
+                        return redirect('/');
+                    }
+                };
+            }
+        );
     }
 }

@@ -25,7 +25,6 @@ class User extends Authenticatable
         'user_postal_code',
         'user_address',
         'user_building',
-        'first_login'
     ];
 
     /**
