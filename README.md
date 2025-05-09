@@ -1,4 +1,4 @@
-# coachtechフリマ  
+# coachtechフリマアプリ  
 
 ## 環境構築  
 
