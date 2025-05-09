@@ -53,3 +53,6 @@ DB_PASSWORD=laravel_pass
 # URL  
 ・開発環境:http://localhost/  
 ・phpMyAdmin:http://localhost:8080/  
+
+#補足
+購入画面の住所変更時は、購入者とは異なる人物への郵送を想定しているためプロフィールの更新は行わない仕様となっています。
