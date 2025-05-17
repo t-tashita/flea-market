@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <div class="app">
+  <main class="app">
     <header class="header">
       <a href="/" class="header__logo"><img class="header__logo-img" src="{{ asset('storage/logo.svg') }}" alt="CoachTech" /></a>
       @yield('navigation')
@@ -19,7 +19,7 @@
     <div class="content">
       @yield('content')
     </div>
-  </div>
+  </main>
+  @yield('script')
 </body>
-@yield('script')
 </html>

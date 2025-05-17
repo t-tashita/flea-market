@@ -24,8 +24,8 @@
 <div class="top-content">
   <div class="top-content__inner">
     <div class="top-content__profile">
-      <img class="profile__image" for="image" src="{{ asset('storage/' . $user->user_image) }}" alt="プロフィール画像" >
-      <label class="profile__name">{{ $user->name }}</label>
+      <img class="profile__image" src="{{ asset('storage/image_user/' . $user->user_image) }}" alt="プロフィール画像" >
+      <span class="profile__name">{{ $user->name }}</span>
       <a class="profile__button-update" href="/mypage/profile">プロフィールを編集</a>
     </div>
 
@@ -38,7 +38,7 @@
           @foreach ($items as $item)
           <div class="item-content">
               <a href="/item/{{$item->id}}" class="item-link">
-                <img src="{{ asset('storage/' . rawurlencode($item->item_image)) }}" alt="商品画像" class="item-img" />
+                <img src="{{ asset('storage/image_item/' . rawurlencode($item->item_image)) }}" alt="商品画像" class="item-img" />
               </a>
               <div class="item-name">
                   <p>{{$item->item_name}}</p>
@@ -49,4 +49,4 @@
     </div>
   </div>
 </div>
-@endsection('content')
+@endsection

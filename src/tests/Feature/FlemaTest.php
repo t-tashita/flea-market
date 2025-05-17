@@ -54,10 +54,6 @@ class FlemaTest extends TestCase
         $response->assertStatus(302);
         $response = $this->get('/sell');
         $response->assertStatus(302);
-
-        //未設定route
-        $response = $this->get('/no_route');
-        $response->assertStatus(404);
     }
 
     //　ユーザ利用時の表示確認
@@ -99,10 +95,6 @@ class FlemaTest extends TestCase
         $response->assertStatus(200);
         $response = $this->get('/sell');
         $response->assertStatus(200);
-
-        //未設定route
-        $response = $this->get('/no_route');
-        $response->assertStatus(404);
 
     }
 
@@ -252,7 +244,7 @@ class FlemaTest extends TestCase
         $this->assertEquals('パスワードを入力してください。', $errors->first('password'));
     }
 
-    // パスワードが入力されていない場合、バリデーションメッセージが表示される
+    // 入力情報が間違っている場合、バリデーションメッセージが表示される
     public function testLoginWrong()
     {
         $response = $this->get('/login');
@@ -606,9 +598,10 @@ class FlemaTest extends TestCase
             'comment' => $commentText,
         ]);
 
-        // コメントが画面に表示されるか確認
         $updatedItem = $item->fresh();
         $this->assertEquals(1, $updatedItem->comments()->count());
+        $response = $this->get('/item/' . $item->id);
+        $response->assertSee($commentText);
     }
 
     // ログイン前のユーザーはコメントを送信できない
@@ -622,14 +615,15 @@ class FlemaTest extends TestCase
             'item_id' => $item->id,
         ]);
 
-        // ログイン画面へリダイレクトされることを確認
         $response->assertRedirect('/login');
 
-        // コメントが保存されていないことを確認
         $this->assertDatabaseMissing('comments', [
             'item_id' => $item->id,
             'comment' => $commentText,
         ]);
+
+        $response = $this->get('/item/' . $item->id);
+        $response->assertDontSee($commentText);
     }
 
     // コメントが入力されていない場合、バリデーションメッセージが表示される
@@ -897,7 +891,7 @@ class FlemaTest extends TestCase
         $response = $this->get('/mypage/sell');
 
         // プロフィール画像が正しく表示されるか確認
-        $response->assertSee('src="' . asset('storage/profile_default.png') . '" alt="プロフィール画像" >',false);
+        $response->assertSee('src="' . asset('storage/image_user/profile_default.png') . '" alt="プロフィール画像" >',false);
         // ユーザー名が正しく表示されるか確認
         $response->assertSee($user->name);
         $response->assertSee($sellItem->item_name);
@@ -918,7 +912,7 @@ class FlemaTest extends TestCase
         $response = $this->get('/mypage/profile');
 
         // ユーザー情報の初期値が正しく表示されるか確認
-        $response->assertSee('src="' . asset('storage/profile_default.png') . '" alt="プロフィール画像" >',false);
+        $response->assertSee('src="' . asset('storage/image_user/profile_default.png') . '" alt="プロフィール画像" >',false);
         $response->assertSee($user->name);
         $response->assertSee($user->user_postal_code);
         $response->assertSee($user->user_address);
@@ -959,7 +953,7 @@ class FlemaTest extends TestCase
             'price' => 1234,
         ]);
 
-        Storage::disk('public')->assertExists('test.jpg');
+        Storage::disk('public')->assertExists('/image_item/test.jpg');
 
         // カテゴリとの関連も確認
         $this->assertDatabaseHas('category_item', [

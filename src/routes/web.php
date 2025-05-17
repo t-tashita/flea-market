@@ -20,6 +20,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/', [ItemController::class, 'index'])->name('top');
-Route::get('/mylist', [ItemController::class, 'mylist'])->name('mylist');
+Route::get('/{page}', [ItemController::class, 'mylist'])->name('mylist');
 Route::get('/item/{item_id}', [ItemController::class, 'detail']);
 Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');

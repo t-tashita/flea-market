@@ -25,7 +25,7 @@
   @csrf
   <div class="left-content">
     <div class="item-detail">
-      <img src="{{ asset('storage/' . $item->item_image) }}" alt="商品画像" class="item-img" />
+      <img src="{{ asset('storage/image_item/' . $item->item_image) }}" alt="商品画像" class="item-img" />
       <div class="item-detail__info">
         <h2 class="item-name">{{ $item->item_name }}</h2>
         <p class="item-price">&yen; <span class=item-value>{{ number_format($item->price) }}</span></p>
@@ -42,27 +42,21 @@
             @endforeach
           </select>
         </div>
-        <p class="order-form__error-message">
-          @error('payment_method')
-          {{ $message }}
-          @enderror
-        </p>
+        @error('payment_method')
+        <p class="order-form__error-message">{{ $message }}</p>
+        @enderror
       </div>
     </div>
     <div class="order-form__group">
       <div class="order-form__detail">
         <div class="order-form__change">
           <label class="order-form__label" >配送先</label>
-          <a class="address-form__btn" href='/purchase/address/{{ $item->id }}'>
-            変更する
-          </a>
+          <a class="address-form__btn" href='/purchase/address/{{ $item->id }}'>変更する</a>
         </div>
         <div class="order-form__address">
-          <p class="order-form__error-message">
-            @error('delivery_info')
-            {{ $message }}
-            @enderror
-          </p>
+          @error('delivery_info')
+          <p class="order-form__error-message">{{ $message }}</p>
+          @enderror
           <p class="order-form__postal_code">&#12306; <input class="order-form__postal_code_input" type="text" value="{{ $address['postal_code'] ?? $user->user_postal_code }}" name="order_postal_code" readonly></p>
           <input class="order-form__address_input" type="text" name="order_address" value="{{ $address['address'] ?? $user->user_address }}" readonly>
           <input class="order-form__address_input" type="text" name="order_building" value="{{ $address['building'] ?? $user->user_building }}" readonly>
@@ -81,7 +75,7 @@
         <th class="pay-detail__method-ttl">支払い方法</th>
         <td class="pay-detail__method-name" id="selected-method-display" >
           @php
-            $selected_payment = $payment_methods->firstWhere('id', old('payment_method'));
+          $selected_payment = $payment_methods->firstWhere('id', old('payment_method'));
           @endphp
           {{ $selected_payment ? $selected_payment->payment_method : '選択してください' }}
         </td>
@@ -99,13 +93,11 @@
   document.addEventListener('DOMContentLoaded', function () {
     const paymentSelect = document.getElementById('paymentSelect');
     const display = document.getElementById('selected-method-display');
-    const hiddenInput = document.getElementById('selected-method-id');
 
     paymentSelect.addEventListener('change', function () {
       const selectedText = paymentSelect.options[paymentSelect.selectedIndex].text;
       const selectedValue = paymentSelect.value;
       display.textContent = selectedText;
-      hiddenInput.value = selectedValue;
     });
   });
 </script>

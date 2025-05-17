@@ -25,6 +25,8 @@ class PurchaseRequest extends FormRequest
     {
         return [
             'payment_method' => 'required',
+
+            // withValidatorにてバリデーションを対応
             'order_postal_code' => 'nullable',
             'order_address' => 'nullable',
             'order_building' => 'nullable',

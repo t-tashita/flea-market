@@ -104,12 +104,23 @@
 }
 
 .item-likes__icon {
-  color: #bbb;
+  color: #000;
   font-size: 18px;
 }
 
 .item-likes__icon.liked {
   color: gold;
+}
+
+.item-comments__icon {
+  display: inline-block;
+  vertical-align: center;
+  align-items: center;
+  width: 20px;
+  height: 26px;
+  font-size: 18px;
+  color: #bbb;
+  stroke: #bbb;
 }
 
 .button-buy,
@@ -130,6 +141,7 @@
 .item-detail,
 .item-info {
   font-size: 20px;
+  font-weight: bold;
 }
 
 .item-category,

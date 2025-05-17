@@ -23,66 +23,52 @@
 @section('content')
 <div class="update-form">
   <div class="update-form__inner">
-    <h2 class="update-form__heading">プロフィール設定</h2>
+    <h1 class="update-form__heading">プロフィール設定</h2>
     <form class="update-form__form" action="/mypage/profile" method="post" enctype="multipart/form-data">
       @csrf
       <div class="update-form__group">
         <div class="update-form__profile">
-          <img class="update-form__image" id="preview" src="{{ asset('storage/' . $user->user_image) }}" alt="プロフィール画像" >
+          <img class="update-form__image" id="preview" src="{{ asset('storage/image_user/' . $user->user_image) }}" alt="プロフィール画像" >
           <input type="file" id="image" name="image" accept="image/*" hidden>
           <label for="image" class="custom-file-label">画像を選択する</label>
         </div>
-        <p class="update-form__error-message">
-          @error('image')
-          {{ $message }}
-          @enderror
-        </p>
+        @error('image')
+        <p class="update-form__error-message">{{ $message }}</p>
+        @enderror
       </div>
-
       <div class="update-form__group">
         <label class="update-form__label" for="name">ユーザー名</label>
         <input class="update-form__input" type="text" name="name" id="name" value="{{ old( 'name', $user->name) }}">
-        <p class="update-form__error-message">
-          @error('name')
-          {{ $message }}
-          @enderror
-        </p>
+        @error('name')
+        <p class="update-form__error-message">{{ $message }}</p>
+        @enderror
       </div>
-
       <div class="update-form__group">
         <label class="update-form__label" for="postal_code">郵便番号</label>
         <input class="update-form__input" type="text" name="postal_code" id="postal_code" value="{{ old('postal_code', $user->user_postal_code) }}">
-        <p class="update-form__error-message">
-          @error('postal_code')
-          {{ $message }}
-          @enderror
-        </p>
+        @error('postal_code')
+        <p class="update-form__error-message">{{ $message }}</p>
+        @enderror
       </div>
-
       <div class="update-form__group">
         <label class="update-form__label" for="address">住所</label>
         <input class="update-form__input" type="text" name="address" id="address" value="{{ old('address', $user->user_address) }}">
-        <p class="update-form__error-message">
-          @error('address')
-          {{ $message }}
-          @enderror
-        </p>
+        @error('address')
+        <p class="update-form__error-message">{{ $message }}</p>
+        @enderror
       </div>
-
       <div class="update-form__group">
         <label class="update-form__label" for="building">建物名</label>
         <input class="update-form__input" type="text" name="building" id="building" value="{{ old('building', $user->user_building) }}">
-        <p class="update-form__error-message">
-          @error('building')
-          {{ $message }}
-          @enderror
-        </p>
+        @error('building')
+        <p class="update-form__error-message">{{ $message }}</p>
+        @enderror
       </div>
-
       <input class="update-form__btn btn" type="submit" value="更新する">
     </form>
+  </div>
 </div>
-@endsection('content')
+@endsection
 
 @section('script')
 <script>
@@ -102,5 +88,4 @@
     }
   });
 </script>
-
 @endsection

@@ -15,7 +15,6 @@ use App\Models\Condition;
 use App\Models\Order;
 use App\Models\PaymentMethod;
 use App\Models\User;
-use App\Models\CategoryItem;
 use App\Models\Comment;
 use App\Models\Like;
 
@@ -90,7 +89,7 @@ class ItemController extends Controller
         return redirect("/item/$item_id");
     }
 
-    public function mylist(Request $request)
+    public function mylist(Request $request , $page)
     {
         $userId = auth()->id();
         $keyword = $request->query('keyword');
@@ -110,7 +109,7 @@ class ItemController extends Controller
             $items = $items->get();
         }
 
-        return view('top', compact('items', 'keyword'));
+        return view('top', compact('items', 'page', 'keyword'));
     }
 
     public function buy($item_id)
@@ -168,7 +167,7 @@ class ItemController extends Controller
     {
         $image = $request->file('image');
         $imageName = $image->getClientOriginalName();
-        $image->storeAs('', $imageName, 'public');
+        $image->storeAs('image_item', $imageName, 'public');
 
         $item = Item::create([
             'user_id' => auth()->id(),
@@ -217,7 +216,7 @@ class ItemController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->storeAs('public', $imageName);
+            $image->storeAs('image_user', $imageName, 'public');
             $data['user_image'] = $imageName;
         }
         auth()->user()->update($data);

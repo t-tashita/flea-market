@@ -7,26 +7,22 @@
 @section('content')
 <div class="login-form">
   <div class="login-form__inner">
-    <h2 class="login-form__heading">ログイン</h2>
+    <h1 class="login-form__heading">ログイン</h1>
     <form class="login-form__form" action="/login" method="post">
       @csrf
       <div class="login-form__group">
-        <p class="login-form__label" for="email">メールアドレス</p>
-        <input class="login-form__input" type="mail" name="email" id="email" >
-        <p class="login-form__error-message">
-          @error('email')
-          {{ $message }}
-          @enderror
-        </p>
+        <label class="login-form__label" for="email">メールアドレス</label>
+        <input class="login-form__input" type="email" name="email" id="email" value="{{ old('email')}}" >
+        @error('email')
+        <p class="login-form__error-message">{{ $message }}</p>
+        @enderror
       </div>
       <div class="login-form__group">
-        <p class="login-form__label" for="password">パスワード</p>
+        <label class="login-form__label" for="password">パスワード</label>
         <input class="login-form__input" type="password" name="password" id="password">
-        <p class="login-form__error-message">
-          @error('password')
-          {{ $message }}
-          @enderror
-        </p>
+        @error('password')
+        <p class="login-form__error-message">{{ $message }}</p>
+        @enderror
       </div>
       <input class="login-form__btn" type="submit" value="ログインする">
     </form>
