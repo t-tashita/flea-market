@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use \App\Models\User;
 
 class ItemsTableSeeder extends Seeder
 {
@@ -14,13 +15,15 @@ class ItemsTableSeeder extends Seeder
      */
     public function run()
     {
+        $userId = User::inRandomOrder()->first()->id;
+
         $param = [
             'item_name' => '腕時計',
             'price' => 15000,
             'description' => 'スタイリッシュなデザインのメンズ腕時計',
             'item_image' => 'Armani+Mens+Clock.jpg',
-            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
-            'condition_id' => \App\Models\Condition::inRandomOrder()->first()->id,
+            'user_id' => $userId,
+            'condition_id' => 1,
             'created_at' => now(),
             'updated_at' => now(),
         ];
@@ -31,8 +34,8 @@ class ItemsTableSeeder extends Seeder
             'price' => 5000,
             'description' => '高速で信頼性の高いハードディスク',
             'item_image' => 'HDD+Hard+Disk.jpg',
-            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
-            'condition_id' => \App\Models\Condition::inRandomOrder()->first()->id,
+            'user_id' => $userId,
+            'condition_id' => 2,
             'created_at' => now(),
             'updated_at' => now(),
         ];
@@ -43,8 +46,8 @@ class ItemsTableSeeder extends Seeder
             'price' => 300,
             'description' => '新鮮な玉ねぎ3束のセット',
             'item_image' => 'iLoveIMG+d.jpg',
-            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
-            'condition_id' => \App\Models\Condition::inRandomOrder()->first()->id,
+            'user_id' => $userId,
+            'condition_id' => 3,
             'created_at' => now(),
             'updated_at' => now(),
         ];
@@ -55,8 +58,8 @@ class ItemsTableSeeder extends Seeder
             'price' => 4000,
             'description' => 'クラシックなデザインの革靴',
             'item_image' => 'Leather+Shoes+Product+Photo.jpg',
-            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
-            'condition_id' => \App\Models\Condition::inRandomOrder()->first()->id,
+            'user_id' => $userId,
+            'condition_id' => 4,
             'created_at' => now(),
             'updated_at' => now(),
         ];
@@ -66,8 +69,8 @@ class ItemsTableSeeder extends Seeder
             'price' => 45000,
             'description' => '高性能なノートパソコン',
             'item_image' => 'Living+Room+Laptop.jpg',
-            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
-            'condition_id' => \App\Models\Condition::inRandomOrder()->first()->id,
+            'user_id' => $userId,
+            'condition_id' => 1,
             'created_at' => now(),
             'updated_at' => now(),
         ];
@@ -78,8 +81,8 @@ class ItemsTableSeeder extends Seeder
             'price' => 8000,
             'description' => '高音質のレコーディング用マイク',
             'item_image' => 'Music+Mic+4632231.jpg',
-            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
-            'condition_id' => \App\Models\Condition::inRandomOrder()->first()->id,
+            'user_id' => $userId,
+            'condition_id' => 2,
             'created_at' => now(),
             'updated_at' => now(),
         ];
@@ -90,8 +93,8 @@ class ItemsTableSeeder extends Seeder
             'price' => 3500,
             'description' => 'おしゃれなショルダーバッグ',
             'item_image' => 'Purse+fashion+pocket.jpg',
-            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
-            'condition_id' => \App\Models\Condition::inRandomOrder()->first()->id,
+            'user_id' => $userId,
+            'condition_id' => 3,
             'created_at' => now(),
             'updated_at' => now(),
         ];
@@ -102,8 +105,8 @@ class ItemsTableSeeder extends Seeder
             'price' => 500,
             'description' => '使いやすいタンブラー',
             'item_image' => 'Tumbler+souvenir.jpg',
-            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
-            'condition_id' => \App\Models\Condition::inRandomOrder()->first()->id,
+            'user_id' => $userId,
+            'condition_id' => 4,
             'created_at' => now(),
             'updated_at' => now(),
         ];
@@ -114,8 +117,8 @@ class ItemsTableSeeder extends Seeder
             'price' => 4000,
             'description' => '手動のコーヒーミル',
             'item_image' => 'Waitress+with+Coffee+Grinder.jpg',
-            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
-            'condition_id' => \App\Models\Condition::inRandomOrder()->first()->id,
+            'user_id' => $userId,
+            'condition_id' => 1,
             'created_at' => now(),
             'updated_at' => now(),
         ];
@@ -126,8 +129,8 @@ class ItemsTableSeeder extends Seeder
             'price' => 2500,
             'description' => '便利なメイクアップセット',
             'item_image' => 'make+set.jpg',
-            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
-            'condition_id' => \App\Models\Condition::inRandomOrder()->first()->id,
+            'user_id' => $userId,
+            'condition_id' => 2,
             'created_at' => now(),
             'updated_at' => now(),
         ];

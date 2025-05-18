@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -297,7 +296,7 @@ class FlemaTest extends TestCase
     // 全商品を取得できる
     public function testTop()
     {
-        $this->seed();
+        $item = Item::factory()->count(5)->create();
 
         $response = $this->get('/');
         $response->assertStatus(200);
