@@ -1,7 +1,0 @@
-*
-!image_item/
-!image_item/*
-!image_user/
-!image_user/*
-!logo.svg
-!.gitignore
