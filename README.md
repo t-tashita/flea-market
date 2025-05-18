@@ -40,6 +40,9 @@ DB_PASSWORD=laravel_pass
 6.シーディングの実行  
 `php artisan db:seed`  
 
+7.シンボリックリンク作成  
+`php artisan storage:link`  
+
 # 使用技術  
 
 ・nginx:1.21.1  
