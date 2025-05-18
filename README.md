@@ -51,7 +51,7 @@ DB_PASSWORD=laravel_pass
 ・MySQL 8.0.26  
 
 # ER図  
-![Image](https://github.com/user-attachments/assets/916d2466-c149-42c7-ada1-bd5d2b4193a5)
+![Image](https://github.com/user-attachments/assets/033bda2e-bc78-46b6-ab08-22c472fdb334)  
 
 # URL  
 ・開発環境:http://localhost/  
